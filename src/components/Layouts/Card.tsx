@@ -1,5 +1,5 @@
-import { EllipsisVertical } from "lucide-react";
 import { menuItems } from "../../data";
+import { NonVegIcon, VegIcon } from "../IsVeg";
 
 const Card: React.FC<{ item: (typeof menuItems)[0]; layout: string }> = ({
 	item,
@@ -10,18 +10,22 @@ const Card: React.FC<{ item: (typeof menuItems)[0]; layout: string }> = ({
 			src={item.image}
 			alt={item.name}
 			className={`w-full ${
-				layout == "masonry" ? "min-h-54" : "h-64"
+				layout == "masonry" ? "min-h-54" : "h-64 md:h-96"
 			} object-cover rounded-xl`}
 		/>
 		<div className='flex h-full items-end'>
 			<div className='backdrop-blur-md flex justify-between items-center rounded-b-xl px-2 py-1 bg-stone-700/40 w-full'>
-				<div>
-					<h2 className='text-md font-bold'>{item.name}</h2>
-					<p className='text-white text-sm font-extrabold'>
+				<div className='flex gap-[2px] flex-col'>
+					<h2 className='text-sm text-white'>{item.name}</h2>
+					<p className='text-white text-sm font-semibold'>
 						₹{item.price.toFixed(2)}
 					</p>
 				</div>
-				<EllipsisVertical />
+				{item.veg ? (
+					<VegIcon className='ml-1' />
+				) : (
+					<NonVegIcon className='ml-1' />
+				)}
 			</div>
 		</div>
 	</div>

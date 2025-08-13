@@ -31,6 +31,7 @@ export const menuItems = [
 		price: 120.0,
 		section: "Main Course",
 		image: getRandomImage(),
+		veg: false,
 	},
 	{
 		name: "Paneer Tikka",
@@ -39,6 +40,7 @@ export const menuItems = [
 		price: 100.0,
 		section: "Appetizers",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Gulab Jamun",
@@ -46,6 +48,7 @@ export const menuItems = [
 		price: 80.0,
 		section: "Desserts",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Mutton Rogan Josh",
@@ -54,6 +57,7 @@ export const menuItems = [
 		price: 180.0,
 		section: "Main Course",
 		image: getRandomImage(),
+		veg: false,
 	},
 	{
 		name: "Veg Spring Rolls",
@@ -62,6 +66,7 @@ export const menuItems = [
 		price: 90.0,
 		section: "Appetizers",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Fish Curry",
@@ -70,6 +75,7 @@ export const menuItems = [
 		price: 150.0,
 		section: "Main Course",
 		image: getRandomImage(),
+		veg: false,
 	},
 	{
 		name: "Masala Dosa",
@@ -78,6 +84,7 @@ export const menuItems = [
 		price: 70.0,
 		section: "Snacks",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Chocolate Brownie",
@@ -86,6 +93,7 @@ export const menuItems = [
 		price: 110.0,
 		section: "Desserts",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Butter Naan",
@@ -93,6 +101,7 @@ export const menuItems = [
 		price: 40.0,
 		section: "Breads",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Tandoori Chicken",
@@ -101,6 +110,7 @@ export const menuItems = [
 		price: 140.0,
 		section: "Appetizers",
 		image: getRandomImage(),
+		veg: false,
 	},
 	{
 		name: "Pav Bhaji",
@@ -108,6 +118,7 @@ export const menuItems = [
 		price: 85.0,
 		section: "Snacks",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Prawn Masala",
@@ -115,6 +126,7 @@ export const menuItems = [
 		price: 160.0,
 		section: "Main Course",
 		image: getRandomImage(),
+		veg: false,
 	},
 	{
 		name: "Mango Lassi",
@@ -122,6 +134,7 @@ export const menuItems = [
 		price: 60.0,
 		section: "Beverages",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Paneer Butter Masala",
@@ -129,6 +142,7 @@ export const menuItems = [
 		price: 130.0,
 		section: "Main Course",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Veg Pulao",
@@ -137,6 +151,7 @@ export const menuItems = [
 		price: 100.0,
 		section: "Main Course",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Chicken Manchurian",
@@ -144,6 +159,7 @@ export const menuItems = [
 		price: 140.0,
 		section: "Appetizers",
 		image: getRandomImage(),
+		veg: false,
 	},
 	{
 		name: "Hakka Noodles",
@@ -151,6 +167,7 @@ export const menuItems = [
 		price: 120.0,
 		section: "Main Course",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Samosa",
@@ -158,6 +175,7 @@ export const menuItems = [
 		price: 25.0,
 		section: "Snacks",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Falooda",
@@ -166,6 +184,7 @@ export const menuItems = [
 		price: 90.0,
 		section: "Desserts",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Chicken Soup",
@@ -173,6 +192,7 @@ export const menuItems = [
 		price: 70.0,
 		section: "Soups",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Lemon Iced Tea",
@@ -180,6 +200,7 @@ export const menuItems = [
 		price: 50.0,
 		section: "Beverages",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Mysore Pak",
@@ -188,6 +209,7 @@ export const menuItems = [
 		price: 100.0,
 		section: "Desserts",
 		image: getRandomImage(),
+		veg: true,
 	},
 	{
 		name: "Chili Paneer",
@@ -196,5 +218,6 @@ export const menuItems = [
 		price: 130.0,
 		section: "Appetizers",
 		image: getRandomImage(),
+		veg: true,
 	},
 ];
