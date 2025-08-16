@@ -23,7 +23,14 @@ const FAB: React.FC<FABProps> = ({ categorizedMenu }) => {
 				onClick={() => setOpen(prev => !prev)}
 				className='p-4 rounded-xl shadow-lg bg-purple-500/70 backdrop-blur-xl text-white hover:bg-blue-700 transition'
 			>
-				{open ? <X size={24} /> : <BookHeart size={24} />}
+				{open ? (
+					<X size={24} />
+				) : (
+					<span className='flex items-center gap-2'>
+						<BookHeart size={24} />
+						<span className='text-sm text-white'>Menu</span>
+					</span>
+				)}
 			</button>
 
 			{open && (

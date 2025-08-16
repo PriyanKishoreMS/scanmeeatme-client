@@ -27,14 +27,14 @@ const LayoutConfig: React.FC<LayoutConfigProps> = ({
 					<div className='space-x-2 flex'>
 						<button
 							type='button'
-							className='ripple btn flex-1 h-20 items-center gap-2 px-5 bg-blue-100 border-blue-200 border rounded-lg'
+							className='ripple btn flex-1 h-20 items-center gap-2 px-5 bg-blue-50 border-blue-200 border rounded-lg'
 						>
 							<ScanText className='text-blue-700' size={21} />
 							<span className='text-blue-700 font-bold'>Scan</span>
 						</button>
 						<button
 							type='button'
-							className='btn flex-1 h-20 items-center gap-2 px-5 bg-blue-100 border-blue-200/50 border rounded-lg'
+							className='btn flex-1 h-20 items-center gap-2 px-5 bg-blue-50 border-blue-200 border rounded-lg'
 						>
 							<FileSpreadsheet className='text-blue-700' size={21} />
 							<span className='text-blue-700 font-bold'>Sheet</span>
