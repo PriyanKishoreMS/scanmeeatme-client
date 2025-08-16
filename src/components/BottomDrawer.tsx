@@ -19,7 +19,6 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
 }) => {
 	return (
 		<>
-			{/* Overlay */}
 			<div
 				className={`fixed inset-0 bg-black/40 transition-opacity duration-300 ${
 					isOpen
@@ -29,9 +28,8 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
 				onClick={onClose}
 			/>
 
-			{/* Drawer */}
 			<div
-				className={`fixed bottom-0 left-0 right-0 bg-base-200 rounded-t-2xl shadow-lg transform transition-transform duration-300 ease-in-out 
+				className={`fixed z-30 bottom-0 left-0 right-0 bg-base-200 rounded-t-2xl shadow-lg transform transition-transform duration-300 ease-in-out 
           ${
 						isOpen ? "translate-y-0" : "translate-y-full"
 					} overflow-y-auto p-4 ${className}`}

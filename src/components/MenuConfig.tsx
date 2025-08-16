@@ -13,7 +13,7 @@ const LayoutConfig: React.FC<LayoutConfigProps> = ({
 }) => {
 	return (
 		<div>
-			<div className='border border-gray-300 rounded-lg shadow-md mb-4 flex flex-col gap-1'>
+			<div className='border bg-base-100 border-base-300 rounded-lg shadow-sm mb-2 flex flex-col gap-1'>
 				<div className='flex flex-col p-2'>
 					<label
 						htmlFor='imports'
@@ -42,12 +42,15 @@ const LayoutConfig: React.FC<LayoutConfigProps> = ({
 					</div>
 				</div>
 
-				<div className='flex flex-col p-2'>
-					<input
-						type='text'
-						className='input w-full rounded-lg'
-						placeholder='Restaurant Name'
-					/>
+				<div className='p-2'>
+					<label className='floating-label flex flex-col'>
+						<input
+							type='text'
+							className='input w-full rounded-lg'
+							placeholder='Restaurant Name'
+						/>
+						<span>Restaurant Name</span>
+					</label>
 				</div>
 				<div className='flex flex-col p-2'>
 					<label

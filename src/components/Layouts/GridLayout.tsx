@@ -5,9 +5,14 @@ import Card from "./Card";
 interface LayoutConfigProps {
 	menuItems: Record<string, typeof menuItems>;
 	layout: string;
+	sectionRefs: React.RefObject<Record<string, HTMLDivElement | null>>;
 }
 
-const GridLayout: React.FC<LayoutConfigProps> = ({ menuItems, layout }) => {
+const GridLayout: React.FC<LayoutConfigProps> = ({
+	menuItems,
+	layout,
+	sectionRefs,
+}) => {
 	const [openSections, setOpenSections] = useState<Record<string, boolean>>(
 		Object.keys(menuItems).reduce(
 			(acc, section) => ({ ...acc, [section]: true }),
@@ -25,9 +30,13 @@ const GridLayout: React.FC<LayoutConfigProps> = ({ menuItems, layout }) => {
 				const isOpen = openSections[section];
 				return (
 					<div
+						id={section}
 						key={section}
 						tabIndex={0}
-						className={`collapse collapse-arrow bg-base-100 border border-base-300 mb-2 ${
+						ref={el => {
+							sectionRefs.current[section] = el;
+						}}
+						className={`collapse collapse-arrow shadow-sm bg-base-100 border border-base-300 mb-2 ${
 							isOpen ? "collapse-open" : "collapse-close"
 						}`}
 					>

@@ -5,9 +5,14 @@ import Card from "./Card";
 interface LayoutConfigProps {
 	menuItems: Record<string, any[]>;
 	layout: string;
+	sectionRefs: React.RefObject<Record<string, HTMLDivElement | null>>;
 }
 
-const MasonryLayout: React.FC<LayoutConfigProps> = ({ menuItems, layout }) => {
+const MasonryLayout: React.FC<LayoutConfigProps> = ({
+	menuItems,
+	layout,
+	sectionRefs,
+}) => {
 	const breakpoints = {
 		default: 3,
 		640: 2,
@@ -31,8 +36,12 @@ const MasonryLayout: React.FC<LayoutConfigProps> = ({ menuItems, layout }) => {
 				return (
 					<div
 						key={section}
+						id={section}
 						tabIndex={0}
-						className={`collapse collapse-arrow bg-base-100 border border-base-300 mb-2 transition-all duration-300 ease-in-out ${
+						ref={el => {
+							sectionRefs.current[section] = el;
+						}}
+						className={`collapse shadow-sm collapse-arrow bg-base-100 border border-base-300 mb-2 transition-all duration-300 ease-in-out ${
 							isOpen ? "collapse-open" : "collapse-close"
 						}`}
 					>

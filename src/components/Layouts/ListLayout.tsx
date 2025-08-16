@@ -4,9 +4,13 @@ import { NonVegIcon, VegIcon } from "../IsVeg";
 
 interface LayoutConfigProps {
 	menuItems: Record<string, typeof menuItems>;
+	sectionRefs: React.RefObject<Record<string, HTMLDivElement | null>>;
 }
 
-const ListLayout: React.FC<LayoutConfigProps> = ({ menuItems }) => {
+const ListLayout: React.FC<LayoutConfigProps> = ({
+	menuItems,
+	sectionRefs,
+}) => {
 	const [openSections, setOpenSections] = useState<Record<string, boolean>>(
 		Object.keys(menuItems).reduce(
 			(acc, section) => ({ ...acc, [section]: true }),
@@ -24,9 +28,13 @@ const ListLayout: React.FC<LayoutConfigProps> = ({ menuItems }) => {
 				const isOpen = openSections[section];
 				return (
 					<div
+						id={section}
 						key={section}
+						ref={el => {
+							sectionRefs.current[section] = el;
+						}}
 						tabIndex={0}
-						className={`collapse collapse-arrow bg-base-100 border border-base-300 mb-2 ${
+						className={`collapse collapse-arrow shadow-sm bg-base-100 border border-base-300 mb-2 ${
 							isOpen ? "collapse-open" : "collapse-close"
 						}`}
 					>

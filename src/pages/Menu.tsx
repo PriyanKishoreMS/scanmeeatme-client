@@ -1,10 +1,11 @@
-import { ChevronLeft, SlidersHorizontal } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BottomDrawer from "../components/BottomDrawer";
+import FAB from "../components/FAB";
 import GridLayout from "../components/Layouts/GridLayout";
 import ListLayout from "../components/Layouts/ListLayout";
 import MasonryLayout from "../components/Layouts/MasonryLayout";
 import LayoutConfig from "../components/MenuConfig";
+import Navbar from "../components/Navbar";
 import { menuItems } from "../data";
 
 const menuLayouts = [
@@ -16,6 +17,30 @@ const menuLayouts = [
 const Menu = () => {
 	const [layout, setLayout] = useState("masonry");
 	const [drawerOpen, setDrawerOpen] = useState(false);
+	const [activeSection, setActiveSection] = useState<string>("Menu");
+	const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+	const [isCustomer, setIsCustomer] = useState(false);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			entries => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						setActiveSection(entry.target.id);
+					}
+				});
+			},
+			{ threshold: 0, rootMargin: "-50% 0px -50% 0px" }
+		);
+
+		Object.values(sectionRefs.current).forEach(ref => {
+			if (ref) observer.observe(ref);
+		});
+
+		return () => {
+			observer.disconnect();
+		};
+	}, [layout]);
 
 	const categorizedMenu = menuItems.reduce<Record<string, typeof menuItems>>(
 		(acc, item) => {
@@ -30,57 +55,57 @@ const Menu = () => {
 		<>
 			<div className='flex w-full justify-center'>
 				<div className='md:w-2/5 w-full'>
-					<div className='flex h-15 w-full sticky top-0 z-10 bg-white/80 backdrop-blur-xl'>
-						<div className='p-2 pr-4 flex items-center justify-between w-full'>
-							<div className='flex gap-3 items-center'>
-								<ChevronLeft className='text-gray-800' />
-								<div className='flex flex-col'>
-									<span className='text-gray-700 text-xs font-medium'>
-										Raja Rangooski Hotel
-									</span>
-									<div className='text-black text-lg font-medium flex gap-3 items-center'>
-										Main Course
-									</div>
-								</div>
-							</div>
-							<div className='flex'>
-								<button
-									className='flex items-center justify-center gap-2 bg-gray-200 p-1 px-4 rounded-lg border border-gray-300 cursor-pointer'
-									onClick={() => setDrawerOpen(!drawerOpen)}
-								>
-									<span className='text-sm font-medium'>Filter</span>
-									<SlidersHorizontal size={12} />
-								</button>
-								{/* <EllipsisVertical /> */}
-							</div>
-						</div>
-					</div>
+					<Navbar
+						activeSection={activeSection}
+						setDrawerOpen={setDrawerOpen}
+						drawerOpen={drawerOpen}
+					/>
 					<div className='px-2'>
-						<LayoutConfig
-							layout={layout}
-							setLayout={setLayout}
-							menuLayouts={menuLayouts}
-						/>
+						{isCustomer ? (
+							<div className='h-60 w-full border-dashed border-purple-500 border-2 bg-gray-200 rounded-xl flex items-center justify-center mt-2'>
+								<h1 className='text-center'>
+									Image Carousel / Hotel Details <br /> placeholder
+								</h1>
+							</div>
+						) : (
+							<LayoutConfig
+								layout={layout}
+								setLayout={setLayout}
+								menuLayouts={menuLayouts}
+							/>
+						)}
 					</div>
+					{/* <input
+						type='checkbox'
+						defaultChecked
+						className='toggle'
+						onChange={() => setIsCustomer(!isCustomer)}
+					/> */}
+
 					<div className='min-h-dvh w-full flex flex-col p-2 space-y-6'>
 						{layout === "masonry" ? (
-							<MasonryLayout menuItems={categorizedMenu} layout={layout} />
+							<MasonryLayout
+								menuItems={categorizedMenu}
+								layout={layout}
+								sectionRefs={sectionRefs}
+							/>
 						) : layout === "grid" ? (
-							<GridLayout menuItems={categorizedMenu} layout={layout} />
+							<GridLayout
+								menuItems={categorizedMenu}
+								layout={layout}
+								sectionRefs={sectionRefs}
+							/>
 						) : (
-							<ListLayout menuItems={categorizedMenu} />
+							<ListLayout
+								menuItems={categorizedMenu}
+								sectionRefs={sectionRefs}
+							/>
 						)}
 					</div>
 				</div>
+				<FAB categorizedMenu={categorizedMenu} />
 			</div>
-			<BottomDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)}>
-				<div className='p-4'>
-					<h2 className='text-lg font-semibold mb-4'>Menu Details</h2>
-					<p className='text-gray-600'>
-						Here you can add more details about the menu item.
-					</p>
-				</div>
-			</BottomDrawer>
+			<BottomDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
 		</>
 	);
 };

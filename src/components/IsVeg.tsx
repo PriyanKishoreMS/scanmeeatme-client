@@ -19,7 +19,7 @@ const cx = (...classes: Array<string | undefined | false>) =>
 	classes.filter(Boolean).join(" ");
 
 export const VegIcon: React.FC<MarkProps> = ({
-	size = 20,
+	size = 15,
 	className,
 	borderColorClass,
 	shapeColorClass,
@@ -47,7 +47,7 @@ export const VegIcon: React.FC<MarkProps> = ({
 };
 
 export const NonVegIcon: React.FC<MarkProps> = ({
-	size = 20,
+	size = 15,
 	className,
 	borderColorClass,
 	shapeColorClass,
