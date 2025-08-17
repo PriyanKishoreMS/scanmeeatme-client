@@ -1,5 +1,6 @@
 import { ChevronLeft, SlidersHorizontal } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 interface NavbarProps {
 	activeSection: string;
@@ -13,6 +14,8 @@ const Navbar: React.FC<NavbarProps> = ({
 	drawerOpen,
 }) => {
 	const [showNav, setShowNav] = useState(true);
+
+	let navigate = useNavigate();
 	// const [lastScrollY, setLastScrollY] = useState(0);
 
 	// useEffect(() => {
@@ -39,7 +42,10 @@ const Navbar: React.FC<NavbarProps> = ({
 		>
 			<div className='p-2 pr-4 flex items-center justify-between w-full'>
 				<div className='flex gap-3 items-center'>
-					<ChevronLeft className='text-gray-800' />
+					<ChevronLeft
+						className='text-gray-800'
+						onClick={() => navigate("/")}
+					/>
 					<div className='flex flex-col'>
 						<span className='text-gray-700 text-xs font-medium'>
 							Raja Rangooski Hotel

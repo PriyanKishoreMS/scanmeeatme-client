@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { menuItems } from "../../data";
-import { NonVegIcon, VegIcon } from "../IsVeg";
+import Card from "./Card";
 
 interface LayoutConfigProps {
 	menuItems: Record<string, typeof menuItems>;
@@ -47,36 +47,7 @@ const ListLayout: React.FC<LayoutConfigProps> = ({
 
 						<div className='collapse-content flex flex-col gap-2'>
 							{items.map((item, idx) => (
-								<div
-									key={idx}
-									className='flex items-center justify-between w-full border rounded-lg border-gray-300 h-36'
-								>
-									<img
-										src={item.image}
-										alt={item.name}
-										className='w-36 h-36 rounded-lg'
-									/>
-									<div className='flex flex-col w-1/2 justify-between h-full p-4'>
-										<div className='flex flex-col w-full items-end h-full'>
-											<span className='flex items-center'>
-												<h3 className='text-sm text-gray-800 text-right'>
-													{item.name}
-												</h3>
-												{item.veg ? (
-													<VegIcon className='ml-1' />
-												) : (
-													<NonVegIcon className='ml-1' />
-												)}
-											</span>
-											<p className='text-black text-sm font-semibold'>
-												₹{item.price.toFixed(2)}
-											</p>
-										</div>
-										<span className='text-xs text-end text-gray-600'>
-											{item.description}
-										</span>
-									</div>
-								</div>
+								<Card key={idx} item={item} layout='list' />
 							))}
 						</div>
 					</div>
