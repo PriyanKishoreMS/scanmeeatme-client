@@ -9,28 +9,26 @@ const Card: React.FC<{ item: (typeof menuItems)[0]; layout: string }> = ({
 		{layout === "list" ? (
 			<ListCard item={item} />
 		) : (
-			<div className='rounded-2xl border-gray-300 bg-gray-50 border overflow-hidden'>
+			<div className='border border-gray-300 bg-gray-50 rounded-2xl overflow-hidden'>
 				<img
 					src={item.image}
 					alt={item.name}
 					className={`w-full ${
-						layout == "masonry" ? "min-h-54" : "h-40 w-40"
+						layout === "masonry" ? "min-h-54" : "h-40 w-40"
 					} object-cover rounded-2xl p-2`}
 				/>
-				<div className='flex items-center'>
-					<div className='backdrop-blur-md flex justify-between items-center rounded-b-xl px-2 pb-2 w-full'>
-						<div className='flex gap-[2px] flex-col'>
-							<h2 className='text-sm text-black'>{item.name}</h2>
-							<p className='text-black text-sm font-semibold'>
-								₹{item.price.toFixed(2)}
-							</p>
-						</div>
-						{item.veg ? (
-							<VegIcon className='ml-1' />
-						) : (
-							<NonVegIcon className='ml-1' />
-						)}
+				<div className='flex px-2 pb-2 justify-between items-center'>
+					<div className='flex gap-[2px] flex-col'>
+						<h2 className='text-sm text-black'>{item.name}</h2>
+						<p className='text-black text-sm font-semibold'>
+							₹{item.price.toFixed(2)}
+						</p>
 					</div>
+					{item.veg ? (
+						<VegIcon className='ml-1' />
+					) : (
+						<NonVegIcon className='ml-1' />
+					)}
 				</div>
 			</div>
 		)}

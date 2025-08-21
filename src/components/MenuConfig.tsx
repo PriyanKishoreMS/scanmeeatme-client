@@ -1,4 +1,7 @@
 import { FileSpreadsheet, ScanText } from "lucide-react";
+import { FaThList } from "react-icons/fa";
+import { IoGrid } from "react-icons/io5";
+import { RiLayoutMasonryFill } from "react-icons/ri";
 
 interface LayoutConfigProps {
 	layout: string;
@@ -73,7 +76,14 @@ const LayoutConfig: React.FC<LayoutConfigProps> = ({
 									layout === lay.value ? "btn-primary" : "btn-soft"
 								}`}
 							>
-								<img src={`/${lay.value}.svg`} className='w-4 h-4' alt='' />
+								{/* <img src={`/${lay.value}.svg`} className='w-4 h-4' alt='' /> */}
+								{lay.value == "masonry" ? (
+									<RiLayoutMasonryFill />
+								) : lay.value == "grid" ? (
+									<IoGrid />
+								) : (
+									<FaThList />
+								)}
 								{lay.label}
 							</button>
 						))}

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-	themes: light --default, pastel;
+	themes:
+		light --default,
+		pastel;
 }
 
 :root {
@@ -34,4 +36,17 @@
 }
 .animate-fade-in {
 	animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+.animate-marquee {
+	display: inline-flex;
+	animation: marquee 25s linear infinite;
 }

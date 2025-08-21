@@ -6,16 +6,54 @@ const Root = () => {
 	let navigate = useNavigate();
 	return (
 		<>
-			<div className='flex flex-col items-center justify-between p-10 text-black h-dvh gap-2'>
+			{/* marquee start */}
+			<div className='absolute z-10  w-full overflow-hidden bg-purple-50/90 backdrop-blur-md py-2'>
+				<div className='flex whitespace-nowrap animate-marquee'>
+					<span className='mx-4'>⚡ Faster table turnover</span>
+					<span className='mx-4'>📊 Powerful analytics</span>
+					<span className='mx-4'>🍽️ Seamless dining orders</span>
+					<span className='mx-4'>🤖 Automated upselling</span>
+					<span className='mx-4'>💸 Higher revenue, lower staff cost</span>
+					<span className='mx-4'>📱 One scan, zero hassle</span>
+
+					<span className='mx-4'>⚡ Faster table turnover</span>
+					<span className='mx-4'>📊 Powerful analytics</span>
+					<span className='mx-4'>🍽️ Seamless dining orders</span>
+					<span className='mx-4'>🤖 Automated upselling</span>
+					<span className='mx-4'>💸 Higher revenue, lower staff cost</span>
+					<span className='mx-4'>📱 One scan, zero hassle</span>
+				</div>
+			</div>
+			{/* marquee end */}
+			<div
+				className='flex flex-col items-center justify-between p-10 text-black h-dvh gap-2 bg-gradient-to-br from-purple-200 via-pink-50 to-blue-100 bg-cover bg-center'
+				style={{ backgroundImage: "url('/resto.webp')" }}
+			>
+				<span className='absolute w-full h-full bottom-[0.5px] bg-black/40'></span>
 				<span></span>
-				<div className='flex gap-4 items-center text-center flex-col text-2xl'>
-					Broo scan me broo, eat me broo
-					<div className='flex gap-2'>
+				<div
+					className='relative flex gap-4 items-center justify-center w-80 h-70 rounded-xl p-5 text-center flex-col bg-cover bg-center'
+					// style={{ backgroundImage: "url('/resto.webp')" }}
+				>
+					<div className='absolute bg-white/30 h-full w-full rounded-xl backdrop-blur-sm'></div>
+					<div className='absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 rounded-tl-xl border-purple-200'></div>
+					<div className='absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 rounded-tr-xl border-purple-200'></div>
+					<div className='absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 rounded-bl-xl border-purple-200'></div>
+					<div className='absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 rounded-br-xl border-purple-200'></div>
+					<div className='flex flex-col'>
+						<span className='text-3xl font-extrabold z-10  italic text-white'>
+							Resto Scan
+						</span>
+						<span className='font-light z-10 text-gray-100'>
+							The future of dining in one scan!
+						</span>
+					</div>
+					<div className='flex flex-col gap-2'>
 						<label htmlFor='restaurant-name' className='floating-label'>
 							<input
 								type='text'
 								className='input rounded-lg'
-								placeholder='Enter Restaurant name'
+								placeholder='Enter Restaurant name 😋'
 								value={restaurantName}
 								onChange={e => setRestaurantName(e.target.value)}
 							/>
@@ -23,15 +61,17 @@ const Root = () => {
 						</label>
 						<button
 							type='button'
-							className='btn btn-primary rounded-lg'
-							onClick={() => navigate(`/${restaurantName}`)}
+							className='btn btn-primary z-10 rounded-lg'
+							onClick={() =>
+								navigate("/restaurant", { state: { name: restaurantName } })
+							}
 						>
 							Go
 						</button>
 					</div>
 				</div>
 				<div className='flex flex-col gap-2'>
-					<button className='btn rounded-lg bg-white text-black border-[#e5e5e5]'>
+					<button className='btn rounded-lg bg-white text-black z-10 border-[#e5e5e5]'>
 						<svg
 							aria-label='Email icon'
 							width='16'
@@ -52,7 +92,7 @@ const Root = () => {
 						</svg>
 						Login with Email
 					</button>
-					<button className='btn bg-white text-black border-[#e5e5e5] rounded-lg'>
+					<button className='btn bg-white text-black border-[#e5e5e5] z-10 rounded-lg'>
 						<svg
 							aria-label='Google logo'
 							width='16'

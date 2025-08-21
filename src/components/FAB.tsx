@@ -21,7 +21,7 @@ const FAB: React.FC<FABProps> = ({ categorizedMenu }) => {
 		<div className='fixed bottom-3 right-3 z-10'>
 			<button
 				onClick={() => setOpen(prev => !prev)}
-				className='p-4 rounded-xl shadow-lg bg-purple-500/70 backdrop-blur-xl text-white hover:bg-blue-700 transition'
+				className='p-4 rounded-xl shadow-lg bg-purple-500/70 backdrop-blur-xl text-white'
 			>
 				{open ? (
 					<X size={24} />

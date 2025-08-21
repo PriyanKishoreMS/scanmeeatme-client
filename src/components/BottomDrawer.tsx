@@ -9,6 +9,8 @@ interface BottomDrawerProps {
 	height?: string; // e.g. "70%", "80vh"
 	className?: string;
 	children?: ReactNode;
+	setIsCustomer: React.Dispatch<React.SetStateAction<boolean>>;
+	isCustomer: boolean;
 }
 
 const sortby = [
@@ -49,6 +51,8 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
 	title = "Filter",
 	height = "70%",
 	className = "",
+	setIsCustomer,
+	isCustomer,
 	// children,
 }) => {
 	return (
@@ -128,6 +132,20 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({
 								</span>
 							))}
 						</div>
+					</div>
+
+					<div className='divider'></div>
+
+					<div className='flex  gap-2'>
+						<span className='text-xs'>Toggle Customer/Resaurant View</span>
+						<input
+							type='checkbox'
+							checked={isCustomer}
+							onChange={() => setIsCustomer(!isCustomer)}
+							onClick={onClose}
+							className='toggle toggle-xs'
+						/>
+						<span className='text-xs'>(Dev mode)</span>
 					</div>
 				</div>
 			</div>

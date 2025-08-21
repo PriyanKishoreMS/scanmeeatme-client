@@ -6,14 +6,16 @@ interface NavbarProps {
 	activeSection: string;
 	setDrawerOpen: (open: boolean) => void;
 	drawerOpen: boolean;
+	restaurantName: string;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
 	activeSection,
 	setDrawerOpen,
 	drawerOpen,
+	restaurantName,
 }) => {
-	const [showNav, setShowNav] = useState(true);
+	const [showNav, _] = useState(true);
 
 	let navigate = useNavigate();
 	// const [lastScrollY, setLastScrollY] = useState(0);
@@ -48,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({
 					/>
 					<div className='flex flex-col'>
 						<span className='text-gray-700 text-xs font-medium'>
-							Raja Rangooski Hotel
+							{restaurantName || "My Restaurant"}
 						</span>
 						<div
 							key={activeSection}
